@@ -1,11 +1,13 @@
 import React from 'react';
 import "./Todo.css";
+import todoActions from "../actions/todoActions";
 
 
 function Todo (props) {
     return (
         <div 
-        onClick={() => props .toggleItemCompleted(props.todoItem.id)} 
+        onClick={() => props.dispatch(todoActions.toggleComplete(props.todoItem.id))}
+        //toggleItemCompleted(props.todoItem.id)} 
         className= {`${props.todoItem.completed ? 'completed' : ''}`}
         >
             <p>

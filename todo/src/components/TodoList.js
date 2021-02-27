@@ -11,8 +11,8 @@ function TodoList(props) {
                 )  
             )} */}
 
-            {props.listItems.map((todoItem) => {
-          return <Todo key={todoItem.id} todoItem={todoItem} toggleItemCompleted={props.toggleItemCompleted}/>;
+            {props.state.map((todoItem) => {
+          return <Todo  state={props.state} dispatch={props.dispatch} key={todoItem.id} todoItem={todoItem} toggleItemCompleted={props.toggleItemCompleted}/>;
       })}
         </div>
     )

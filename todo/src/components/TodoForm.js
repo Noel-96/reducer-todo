@@ -12,10 +12,7 @@ function TodoForm(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-  //      props.dispatch( todoActions.addTodo(newTodoName))
-     //    props.dispatch({type:"ADD_TODO", payload:newTodoName})
-        console.log("holla1",newTodoName)
-       props.handleItemAdd(newTodoName);
+       props.dispatch( todoActions.addTodo(newTodoName))
         setnewTodoName(e.target.value) // from props
         setnewTodoName("")
     }

@@ -1,6 +1,7 @@
 import React, { useState, useReducer } from "react";
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
+import todoActions from "./actions/todoActions";
 import todoReducer from './reducers/todoReducer'
 
 
@@ -39,9 +40,11 @@ function App() {
 
 
   const clearCompleted = () => {
-    const updatedList = listItems.filter(todo => !todo.completed);
-    // filter returns items that pass the test, we want to return false completed
-    setlistItems(updatedList)
+    // const updatedList = listItems.filter(todo => !todo.completed);
+    // // filter returns items that pass the test, we want to return false completed
+    // setlistItems(updatedList)
+    dispatch(todoActions.clearComplete())
+    
     
   }
 
@@ -52,14 +55,15 @@ function App() {
       id: Math.floor(Math.random()*100), 
       completed: false
     }] );
+   // dispatch(todoActions.addTodo(taskName))
   }
 
 
   return (
-    <div>
+    <div >{console.log("state in app",state)}
         <h2>Welcome to your Todo App!</h2>
-        <TodoList listItems={listItems} toggleItemCompleted={toggleItemCompleted}
-        clearCompleted={clearCompleted} />
+        <TodoList  state={state} dispatch={dispatch} listItems={listItems} toggleItemCompleted={toggleItemCompleted}
+       />
         <TodoForm state={state} dispatch={dispatch} handleItemAdd={handleItemAdd} />
         <br />
         <button onClick={clearCompleted}>Clear Completed Tasks</button>
